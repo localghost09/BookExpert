@@ -1,162 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookMyExpert - Connect with Professionals</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#3B82F6',
-                        secondary: '#1E40AF'
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        secondary: '#1E40AF',
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+        /* Dark mode scrollbar */
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 dark:bg-dark-900 transition-colors duration-300 font-sans">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="bg-white/80 dark:bg-dark-800/80 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-dark-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="flex items-center space-x-2">
-                        <i class="fas fa-calendar-check text-primary text-2xl"></i>
-                        <span class="text-xl font-bold text-gray-900">BookMyExpert</span>
+                    <a href="index.html" class="flex items-center space-x-3 group">
+                        <div class="relative">
+                            <i class="fas fa-calendar-check text-primary-500 text-2xl group-hover:scale-110 transition-transform duration-200"></i>
+                            <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600 bg-clip-text text-transparent">BookMyExpert</span>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-900 hover:text-primary font-medium">Home</a>
-                    <a href="browse.html" class="text-gray-600 hover:text-primary">Browse Experts</a>
-                    <a href="dashboard.html" class="text-gray-600 hover:text-primary">Dashboard</a>
-                    <a href="about.html" class="text-gray-600 hover:text-primary">About</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-primary">Contact</a>
-                    <a href="login.html" class="text-gray-600 hover:text-primary">Login</a>
-                    <a href="register.html" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition">Sign Up</a>
+                    <a href="index.html" class="text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 relative group">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="browse.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 relative group">
+                        Browse Experts
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="dashboard.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 relative group">
+                        Dashboard
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="about.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="contact.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 relative group">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-600 transition-all duration-200 group">
+                        <i class="fas fa-sun dark:hidden group-hover:rotate-180 transition-transform duration-300"></i>
+                        <i class="fas fa-moon hidden dark:block group-hover:-rotate-12 transition-transform duration-300"></i>
+                    </button>
+
+                    <a href="login.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">Login</a>
+                    <a href="register.html" class="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-6 py-2.5 rounded-xl font-medium shadow-lg hover:shadow-primary-500/25 transform hover:scale-105 transition-all duration-200">
+                        Sign Up
+                    </a>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900">
+                <div class="md:hidden flex items-center space-x-2">
+                    <!-- Mobile Theme Toggle -->
+                    <button id="mobile-theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-dark-700 text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-sun dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 dark:bg-dark-800/95 backdrop-blur-md border-t border-gray-200 dark:border-dark-700">
             <div class="px-4 py-2 space-y-2">
-                <a href="index.html" class="block text-gray-900 hover:text-primary font-medium py-2">Home</a>
-                <a href="browse.html" class="block text-gray-600 hover:text-primary py-2">Browse Experts</a>
-                <a href="about.html" class="block text-gray-600 hover:text-primary py-2">About</a>
-                <a href="contact.html" class="block text-gray-600 hover:text-primary py-2">Contact</a>
-                <a href="login.html" class="block text-gray-600 hover:text-primary py-2">Login</a>
-                <a href="register.html" class="block bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition mt-2">Sign Up</a>
+                <a href="index.html" class="block text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 font-medium py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-700 transition-all duration-200">Home</a>
+                <a href="browse.html" class="block text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-700 transition-all duration-200">Browse Experts</a>
+                <a href="dashboard.html" class="block text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-700 transition-all duration-200">Dashboard</a>
+                <a href="about.html" class="block text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-700 transition-all duration-200">About</a>
+                <a href="contact.html" class="block text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-700 transition-all duration-200">Contact</a>
+                <a href="login.html" class="block text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-700 transition-all duration-200">Login</a>
+                <a href="register.html" class="block bg-gradient-to-r from-primary-500 to-primary-600 text-white px-4 py-2 rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all duration-200 mt-2">Sign Up</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-primary to-secondary text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">Connect with Expert Professionals</h1>
-                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                    Book appointments with teachers, mentors, financial advisors, and business professionals.
-                    Get expert guidance tailored to your needs.
+    <section class="relative bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 bg-grid-gray-100 dark:bg-grid-dark-800 opacity-20"></div>
+        <div class="absolute top-0 left-0 w-96 h-96 bg-primary-200 dark:bg-primary-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl opacity-30 animate-pulse-slow"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-200 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl opacity-30 animate-pulse-slow animation-delay-2000"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+            <div class="text-center animate-fade-in">
+                <div class="mb-8">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 border border-primary-200 dark:border-primary-800">
+                        <i class="fas fa-sparkles mr-2"></i>
+                        Trusted by 10,000+ professionals
+                    </span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-8 leading-tight">
+                    Connect with
+                    <span class="bg-gradient-to-r from-primary-600 via-purple-600 to-primary-800 dark:from-primary-400 dark:via-purple-400 dark:to-primary-600 bg-clip-text text-transparent animate-pulse-slow">
+                        Expert
+                    </span>
+                    <br>Professionals
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+                    Book personalized sessions with verified experts in
+                    <span class="font-semibold text-primary-600 dark:text-primary-400">education</span>,
+                    <span class="font-semibold text-green-600 dark:text-green-400">finance</span>,
+                    <span class="font-semibold text-purple-600 dark:text-purple-400">business</span>, and
+                    <span class="font-semibold text-orange-600 dark:text-orange-400">skills development</span>.
+                    Get guidance tailored to your unique needs.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="browse.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                    <a href="browse.html" class="group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl hover:shadow-primary-500/25 transform hover:scale-105 transition-all duration-300 flex items-center">
+                        <i class="fas fa-search mr-3 group-hover:rotate-12 transition-transform duration-300"></i>
                         Browse Experts
+                        <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
                     </a>
-                    <a href="register.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition">
-                        Get Started
+                    <a href="register.html" class="group border-2 border-primary-500 dark:border-primary-400 text-primary-600 dark:text-primary-400 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-400 dark:hover:text-dark-900 px-8 py-4 rounded-2xl font-semibold text-lg backdrop-blur-sm bg-white/50 dark:bg-dark-800/50 hover:bg-primary-500 transition-all duration-300 flex items-center">
+                        <i class="fas fa-rocket mr-3 group-hover:rotate-12 transition-transform duration-300"></i>
+                        Get Started Free
                     </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                    <div class="text-center group">
+                        <div class="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform duration-300">500+</div>
+                        <div class="text-gray-600 dark:text-gray-400 font-medium">Verified Experts</div>
+                    </div>
+                    <div class="text-center group">
+                        <div class="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-2 group-hover:scale-110 transition-transform duration-300">50K+</div>
+                        <div class="text-gray-600 dark:text-gray-400 font-medium">Sessions Completed</div>
+                    </div>
+                    <div class="text-center group">
+                        <div class="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">4.9</div>
+                        <div class="text-gray-600 dark:text-gray-400 font-medium">Average Rating</div>
+                    </div>
+                    <div class="text-center group">
+                        <div class="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2 group-hover:scale-110 transition-transform duration-300">24/7</div>
+                        <div class="text-gray-600 dark:text-gray-400 font-medium">Support</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="py-20 bg-white">
+    <section class="py-24 bg-white dark:bg-dark-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose BookMyExpert?</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            <div class="text-center mb-20">
+                <div class="mb-6">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 border border-primary-200 dark:border-primary-800">
+                        <i class="fas fa-star mr-2"></i>
+                        Premium Features
+                    </span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Why Choose BookMyExpert?</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                     Connect with verified professionals across various fields and book appointments that fit your schedule.
                 </p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-6">
-                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-check text-primary text-2xl"></i>
+                <div class="group text-center p-8 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 border border-primary-200 dark:border-primary-800 hover:shadow-2xl hover:shadow-primary-500/10 transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-primary-500 to-primary-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i class="fas fa-user-check text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Verified Experts</h3>
-                    <p class="text-gray-600">All professionals are thoroughly vetted and verified for quality assurance.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Verified Experts</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">All professionals are thoroughly vetted and verified for quality assurance with strict background checks.</p>
                 </div>
-                <div class="text-center p-6">
-                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-clock text-primary text-2xl"></i>
+                <div class="group text-center p-8 rounded-2xl bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 border border-green-200 dark:border-green-800 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-green-500 to-green-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i class="fas fa-clock text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Flexible Scheduling</h3>
-                    <p class="text-gray-600">Book appointments at your convenience with real-time availability.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Flexible Scheduling</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Book appointments at your convenience with real-time availability and instant confirmation.</p>
                 </div>
-                <div class="text-center p-6">
-                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-shield-alt text-primary text-2xl"></i>
+                <div class="group text-center p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 border border-purple-200 dark:border-purple-800 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i class="fas fa-shield-alt text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Secure Platform</h3>
-                    <p class="text-gray-600">Your data and conversations are protected with enterprise-grade security.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Secure Platform</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Your data and conversations are protected with enterprise-grade security and encryption.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Categories Section -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-24 bg-gray-50 dark:bg-dark-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Professional Categories</h2>
-                <p class="text-lg text-gray-600">Find experts in various fields to help you achieve your goals.</p>
+            <div class="text-center mb-20">
+                <div class="mb-6">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 border border-orange-200 dark:border-orange-800">
+                        <i class="fas fa-layer-group mr-2"></i>
+                        Categories
+                    </span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Professional Categories</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">Find experts in various fields to help you achieve your goals and unlock your potential.</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer" onclick="browseByCategory('education')">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group bg-white dark:bg-dark-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-dark-700 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer hover:-translate-y-2" onclick="browseByCategory('education')">
                     <div class="text-center">
-                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-graduation-cap text-blue-600 text-2xl"></i>
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                            <i class="fas fa-graduation-cap text-blue-600 dark:text-blue-400 text-3xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold mb-2">Education</h3>
-                        <p class="text-gray-600 text-sm">Teachers, tutors, and academic mentors</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Education</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Teachers, tutors, and academic mentors for all subjects</p>
+                        <div class="mt-4 flex items-center justify-center text-blue-600 dark:text-blue-400 font-medium">
+                            <span class="mr-2">Explore</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer" onclick="browseByCategory('finance')">
+                <div class="group bg-white dark:bg-dark-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-dark-700 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300 cursor-pointer hover:-translate-y-2" onclick="browseByCategory('finance')">
                     <div class="text-center">
-                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-chart-line text-green-600 text-2xl"></i>
+                        <div class="bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                            <i class="fas fa-chart-line text-green-600 dark:text-green-400 text-3xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold mb-2">Finance</h3>
-                        <p class="text-gray-600 text-sm">Financial advisors and investment experts</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Finance</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Financial advisors and investment experts for your wealth</p>
+                        <div class="mt-4 flex items-center justify-center text-green-600 dark:text-green-400 font-medium">
+                            <span class="mr-2">Explore</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer" onclick="browseByCategory('business')">
+                <div class="group bg-white dark:bg-dark-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-dark-700 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 cursor-pointer hover:-translate-y-2" onclick="browseByCategory('business')">
                     <div class="text-center">
-                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-store text-purple-600 text-2xl"></i>
+                        <div class="bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                            <i class="fas fa-store text-purple-600 dark:text-purple-400 text-3xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold mb-2">Business</h3>
-                        <p class="text-gray-600 text-sm">Business consultants and service providers</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Business</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Business consultants and service providers for growth</p>
+                        <div class="mt-4 flex items-center justify-center text-purple-600 dark:text-purple-400 font-medium">
+                            <span class="mr-2">Explore</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer" onclick="browseByCategory('skills')">
+                <div class="group bg-white dark:bg-dark-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-dark-700 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300 cursor-pointer hover:-translate-y-2" onclick="browseByCategory('skills')">
                     <div class="text-center">
-                        <div class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-lightbulb text-orange-600 text-2xl"></i>
+                        <div class="bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/30 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                            <i class="fas fa-lightbulb text-orange-600 dark:text-orange-400 text-3xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold mb-2">Skills</h3>
-                        <p class="text-gray-600 text-sm">Skill development and training experts</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Skills</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Skill development and training experts for mastery</p>
+                        <div class="mt-4 flex items-center justify-center text-orange-600 dark:text-orange-400 font-medium">
+                            <span class="mr-2">Explore</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -164,62 +339,119 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-primary text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Join thousands of users who have already found their perfect expert match.
+    <section class="py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-purple-700 text-white relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full filter blur-3xl opacity-20 animate-pulse-slow"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-400/20 rounded-full filter blur-3xl opacity-20 animate-pulse-slow"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8">
+                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/20 text-white border border-white/30">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Ready to Start?
+                </span>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">Ready to Get Started?</h2>
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto opacity-90 leading-relaxed">
+                Join thousands of users who have already found their perfect expert match and transformed their careers.
             </p>
-            <a href="register.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition inline-block">
-                Create Your Account
-            </a>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="register.html" class="group bg-white text-primary-600 px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-white/25 transform hover:scale-105 transition-all duration-300 flex items-center">
+                    <i class="fas fa-user-plus mr-3 group-hover:rotate-12 transition-transform duration-300"></i>
+                    Create Your Account
+                    <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+                <a href="browse.html" class="group border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-4 rounded-2xl font-bold text-lg backdrop-blur-sm bg-white/10 transition-all duration-300 flex items-center">
+                    <i class="fas fa-search mr-3"></i>
+                    Browse Experts
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-dark-900 text-white py-16 border-t border-dark-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fas fa-calendar-check text-primary text-2xl"></i>
-                        <span class="text-xl font-bold">BookMyExpert</span>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="relative">
+                            <i class="fas fa-calendar-check text-primary-400 text-3xl"></i>
+                            <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                        </div>
+                        <span class="text-2xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">BookMyExpert</span>
                     </div>
-                    <p class="text-gray-400">Connecting you with verified professionals for personalized consultations.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="browse.html" class="text-gray-400 hover:text-white">Browse Experts</a></li>
-                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Categories</h3>
-                    <ul class="space-y-2">
-                        <li><a href="browse.html?category=education" class="text-gray-400 hover:text-white">Education</a></li>
-                        <li><a href="browse.html?category=finance" class="text-gray-400 hover:text-white">Finance</a></li>
-                        <li><a href="browse.html?category=business" class="text-gray-400 hover:text-white">Business</a></li>
-                        <li><a href="browse.html?category=skills" class="text-gray-400 hover:text-white">Skills</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6">Connecting you with verified professionals for personalized consultations and expert guidance.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-dark-800 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all duration-300 group">
+                            <i class="fab fa-facebook-f text-gray-400 group-hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-dark-800 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all duration-300 group">
+                            <i class="fab fa-twitter text-gray-400 group-hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-dark-800 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all duration-300 group">
+                            <i class="fab fa-linkedin-in text-gray-400 group-hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-dark-800 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all duration-300 group">
+                            <i class="fab fa-instagram text-gray-400 group-hover:text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-white">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="browse.html" class="text-gray-400 hover:text-primary-400 transition-colors duration-200 flex items-center group">
+                            <i class="fas fa-chevron-right mr-2 text-xs group-hover:translate-x-1 transition-transform duration-200"></i>
+                            Browse Experts
+                        </a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary-400 transition-colors duration-200 flex items-center group">
+                            <i class="fas fa-chevron-right mr-2 text-xs group-hover:translate-x-1 transition-transform duration-200"></i>
+                            About Us
+                        </a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary-400 transition-colors duration-200 flex items-center group">
+                            <i class="fas fa-chevron-right mr-2 text-xs group-hover:translate-x-1 transition-transform duration-200"></i>
+                            Contact
+                        </a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-white">Categories</h3>
+                    <ul class="space-y-3">
+                        <li><a href="browse.html?category=education" class="text-gray-400 hover:text-blue-400 transition-colors duration-200 flex items-center group">
+                            <i class="fas fa-graduation-cap mr-2 text-blue-400"></i>
+                            Education
+                        </a></li>
+                        <li><a href="browse.html?category=finance" class="text-gray-400 hover:text-green-400 transition-colors duration-200 flex items-center group">
+                            <i class="fas fa-chart-line mr-2 text-green-400"></i>
+                            Finance
+                        </a></li>
+                        <li><a href="browse.html?category=business" class="text-gray-400 hover:text-purple-400 transition-colors duration-200 flex items-center group">
+                            <i class="fas fa-store mr-2 text-purple-400"></i>
+                            Business
+                        </a></li>
+                        <li><a href="browse.html?category=skills" class="text-gray-400 hover:text-orange-400 transition-colors duration-200 flex items-center group">
+                            <i class="fas fa-lightbulb mr-2 text-orange-400"></i>
+                            Skills
+                        </a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-white">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Stay updated with expert tips and platform updates.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="bg-dark-800 border border-dark-700 rounded-l-xl px-4 py-3 text-white flex-1 focus:outline-none focus:border-primary-500">
+                        <button class="bg-primary-500 hover:bg-primary-600 px-6 py-3 rounded-r-xl transition-colors duration-200">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-                <p class="text-gray-400">&copy; 2025 BookMyExpert. All rights reserved.</p>
-                <p class="text-gray-500 text-sm mt-2">
-                    Made with <i class="fas fa-heart text-red-500 animate-pulse"></i> by
-                    <span class="text-primary font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Psyko_Ind</span>
-                    <span class="text-yellow-400">:)</span>
+            <div class="border-t border-dark-800 pt-8 text-center">
+                <p class="text-gray-400 mb-4">&copy; 2025 BookMyExpert. All rights reserved.</p>
+                <p class="text-gray-500 text-sm">
+                    Made with <i class="fas fa-heart text-red-500 animate-pulse mx-1"></i> by
+                    <span class="font-bold bg-gradient-to-r from-primary-400 via-purple-400 to-primary-600 bg-clip-text text-transparent">Psyko_Ind</span>
+                    <span class="text-yellow-400 ml-1 text-lg">:)</span>
                 </p>
             </div>
         </div>
